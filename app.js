@@ -1,9 +1,22 @@
 // Patient
 // //Pages
-const ViewAppointment={
-  template: `
-  <main>
-  <br>
+const PatientProfile={
+  template:`
+   <!-- Profile Info Section -->
+        <div class="bg-white p-6 shadow-sm mb-4">
+            <div class="flex items-center">
+                <img src="https://media.licdn.com/dms/image/v2/C4D03AQErO2cyhF5skQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1653485994030?e=1741219200&v=beta&t=XgIq9VMvlOu_b8Oxg4ufpAU24st2WGFXwUCdaDemZqc" alt="User" class="rounded-full w-24 h-24 mr-4">
+                <div>
+                    <h2 class="text-xl font-bold">John Doe</h2>
+                    <p class="text-gray-600">john.doe@example.com</p>
+                    <p class="text-gray-600">+1 (123) 456-7890</p>
+                </div>
+            </div>
+            <div class="mt-4 flex gap-4">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Edit Profile</button>
+                <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg">Manage Preferences</button>
+            </div>
+        </div>
         <div class="grid grid-cols-2 gap-4 mb-6">
             <button class="bg-white p-4 rounded-lg shadow flex items-center justify-center space-x-2">
                 <i class="far fa-calendar text-blue-500"></i>
@@ -14,6 +27,13 @@ const ViewAppointment={
                 <span>View Reports</span>
             </button>
         </div>
+  `
+}
+const ViewAppointment={
+  template: `
+  <main>
+  <br>
+        
 
         <div class="bg-white p-4 rounded-lg shadow mb-6">
             <h2 class="text-lg font-semibold mb-2">Upcoming Appointment</h2>
@@ -37,6 +57,33 @@ const ViewAppointment={
             </div>
         </div>
     </main>
+      <!-- Past Appointments Section -->
+        <div class="bg-white p-6 shadow-sm mb-4">
+            <h2 class="text-lg font-semibold mb-4">Past Appointments</h2>
+             
+            <div class="flex flex-col gap-4">
+                <!-- Appointment 1 -->
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm flex justify-between items-center">
+                    <div>
+                        <h3 class="font-semibold">Dr. Sarah Wilson</h3>
+                        <p class="text-sm text-gray-600">Cardiologist</p>
+                        <p class="text-sm text-gray-500">March 20, 2024 | 10:30 AM</p>
+                    </div>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Rebook</button>
+                </div>
+                <!-- Appointment 2 -->
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm flex justify-between items-center">
+                    <div>
+                        <h3 class="font-semibold">Dr. Emily Johnson</h3>
+                        <p class="text-sm text-gray-600">Pediatrician</p>
+                        <p class="text-sm text-gray-500">February 15, 2024 | 2:00 PM</p>
+                    </div>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Rebook</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
 
 `
 };
@@ -285,7 +332,8 @@ search
  const routes = [
     { path: '/', component: PatientHome },
     { path: '/search', component: FindDoctor },
-    { path: '/view-appointment', component: ViewAppointment}
+    { path: '/view-appointment', component: ViewAppointment},    
+    { path: '/profile', component: PatientProfile}
   ];
 
 const router = VueRouter.createRouter({

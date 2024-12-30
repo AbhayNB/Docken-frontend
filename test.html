@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocApp - Home</title>
+    <title>DocApp - Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,7 +13,7 @@
     <div id="app">
         <!-- Header -->
         <div class="bg-white p-4 flex justify-between items-center shadow-sm">
-            <h1 class="text-lg font-semibold">DocApp</h1>
+            <h1 class="text-lg font-semibold">Profile</h1>
             <button class="h-6 w-6 text-gray-500">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-6 w-6">
                     <path d="M21 2L3 22M3 2l18 18"></path>
@@ -21,85 +21,74 @@
             </button>
         </div>
 
-        <!-- Categories -->
-        <div class="bg-white p-4 overflow-x-auto whitespace-nowrap shadow-sm mb-4">
-            <button class="px-4 py-2 rounded-full bg-blue-500 text-white mr-2">All</button>
-            <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 mr-2">Cardiology</button>
-            <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 mr-2">Dermatology</button>
-            <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 mr-2">Pediatrics</button>
-            <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 mr-2">Orthopedics</button>
-            <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 mr-2">Neurology</button>
+        <!-- Profile Info Section -->
+        <div class="bg-white p-6 shadow-sm mb-4">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/100" alt="User" class="rounded-full w-24 h-24 mr-4">
+                <div>
+                    <h2 class="text-xl font-bold">John Doe</h2>
+                    <p class="text-gray-600">john.doe@example.com</p>
+                    <p class="text-gray-600">+1 (123) 456-7890</p>
+                </div>
+            </div>
+            <div class="mt-4 flex gap-4">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Edit Profile</button>
+                <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg">Manage Preferences</button>
+            </div>
         </div>
-        <main>
-       
 
-            <div class="bg-white p-4 rounded-lg shadow mb-6">
-                <h2 class="text-lg font-semibold mb-2">Upcoming Appointment</h2>
-                <div class="flex justify-between items-center">
+        <!-- Past Appointments Section -->
+        <div class="bg-white p-6 shadow-sm mb-4">
+            <h2 class="text-lg font-semibold mb-4">Past Appointments</h2>
+            <div class="flex flex-col gap-4">
+                <!-- Appointment 1 -->
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm flex justify-between items-center">
                     <div>
-                        <p class="font-medium">Dr. Sarah Wilson</p>
-                        <p class="text-sm text-gray-600">Today at 14:30</p>
+                        <h3 class="font-semibold">Dr. Sarah Wilson</h3>
+                        <p class="text-sm text-gray-600">Cardiologist</p>
+                        <p class="text-sm text-gray-500">March 20, 2024 | 10:30 AM</p>
                     </div>
-                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">#A45</span>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Rebook</button>
+                </div>
+                <!-- Appointment 2 -->
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm flex justify-between items-center">
+                    <div>
+                        <h3 class="font-semibold">Dr. Emily Johnson</h3>
+                        <p class="text-sm text-gray-600">Pediatrician</p>
+                        <p class="text-sm text-gray-500">February 15, 2024 | 2:00 PM</p>
+                    </div>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Rebook</button>
                 </div>
             </div>
-
-            <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="text-sm text-gray-600 mb-1">Current Token</h3>
-                    <p class="text-2xl font-bold">A43</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="text-sm text-gray-600 mb-1">Est. Wait Time</h3>
-                    <p class="text-2xl font-bold">15 min</p>
-                </div>
+            <div class="mt-4 text-center">
+                <button class="bg-blue-500 text-white px-6 py-2 rounded-lg">View All</button>
             </div>
-        </main>
+        </div>
 
-        <!-- Doctor Cards -->
-        <main class="p-4">
-            <h2 class="text-lg font-semibold mb-4">Featured Doctors</h2>
+        <!-- Health Tips Section -->
+        <section class="p-4 mt-4 bg-white shadow-sm rounded-lg">
+            <h2 class="text-lg font-semibold mb-4">Health Tips</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Doctor Card 1 -->
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <img src="https://via.placeholder.com/150" alt="Doctor" class="rounded-full w-24 h-24 mx-auto mb-4">
-                    <h3 class="text-center text-lg font-bold">Dr. Sarah Wilson</h3>
-                    <p class="text-center text-gray-600">Cardiologist</p>
-                    <p class="text-sm text-gray-500 mt-2 text-center">"Providing compassionate care with cutting-edge treatments."</p>
-                    <div class="mt-4 flex justify-center">
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">View Profile</button>
-                    </div>
+                <div class="bg-blue-100 p-4 rounded-lg">
+                    <h3 class="font-semibold">Stay Hydrated</h3>
+                    <p class="text-sm text-gray-600">Drink at least 8 glasses of water daily to stay healthy.</p>
                 </div>
-
-                <!-- Doctor Card 2 -->
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <img src="https://via.placeholder.com/150" alt="Doctor" class="rounded-full w-24 h-24 mx-auto mb-4">
-                    <h3 class="text-center text-lg font-bold">Dr. James Smith</h3>
-                    <p class="text-center text-gray-600">Dermatologist</p>
-                    <p class="text-sm text-gray-500 mt-2 text-center">"Helping you achieve healthy and glowing skin."</p>
-                    <div class="mt-4 flex justify-center">
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">View Profile</button>
-                    </div>
+                <div class="bg-blue-100 p-4 rounded-lg">
+                    <h3 class="font-semibold">Regular Exercise</h3>
+                    <p class="text-sm text-gray-600">Engage in physical activities for at least 30 minutes a day.</p>
                 </div>
-
-                <!-- Doctor Card 3 -->
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <img src="https://via.placeholder.com/150" alt="Doctor" class="rounded-full w-24 h-24 mx-auto mb-4">
-                    <h3 class="text-center text-lg font-bold">Dr. Emily Johnson</h3>
-                    <p class="text-center text-gray-600">Pediatrician</p>
-                    <p class="text-sm text-gray-500 mt-2 text-center">"Caring for your child's health and happiness."</p>
-                    <div class="mt-4 flex justify-center">
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">View Profile</button>
-                    </div>
+                <div class="bg-blue-100 p-4 rounded-lg">
+                    <h3 class="font-semibold">Healthy Eating</h3>
+                    <p class="text-sm text-gray-600">Include fruits and vegetables in your diet for better health.</p>
                 </div>
             </div>
-        </main>
+        </section>
 
         <!-- Navigation -->
         <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
             <ul class="flex justify-around py-3">
                 <li>
-                    <a href="#" class="flex flex-col items-center text-blue-500">
+                    <a href="#" class="flex flex-col items-center text-gray-500">
                         <i class="fas fa-home"></i>
                         <span class="text-xs mt-1">Home</span>
                     </a>
@@ -117,7 +106,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex flex-col items-center text-gray-500">
+                    <a href="#" class="flex flex-col items-center text-blue-500">
                         <i class="far fa-user"></i>
                         <span class="text-xs mt-1">Profile</span>
                     </a>
