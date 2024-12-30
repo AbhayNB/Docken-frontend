@@ -21,6 +21,34 @@
             </button>
         </div>
 
+        <!-- Search and Filters -->
+        <div class="bg-white p-4 shadow-sm mb-4">
+            <input type="text" placeholder="Search doctors, clinics..." class="w-full px-4 py-2 border rounded-lg mb-4" />
+            <div class="flex flex-wrap gap-2">
+                <select class="border rounded-lg px-4 py-2">
+                    <option value="">Specializations</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Neurology">Neurology</option>
+                </select>
+                <select class="border rounded-lg px-4 py-2">
+                    <option value="">Location</option>
+                    <option value="New York">New York</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Houston">Houston</option>
+                </select>
+                <select class="border rounded-lg px-4 py-2">
+                    <option value="">Availability</option>
+                    <option value="Available Now">Available Now</option>
+                    <option value="Tomorrow">Tomorrow</option>
+                    <option value="This Week">This Week</option>
+                </select>
+            </div>
+        </div>
+
         <!-- Categories -->
         <div class="bg-white p-4 overflow-x-auto whitespace-nowrap shadow-sm mb-4">
             <button class="px-4 py-2 rounded-full bg-blue-500 text-white mr-2">All</button>
@@ -30,35 +58,10 @@
             <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 mr-2">Orthopedics</button>
             <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 mr-2">Neurology</button>
         </div>
-        <main>
-       
 
-            <div class="bg-white p-4 rounded-lg shadow mb-6">
-                <h2 class="text-lg font-semibold mb-2">Upcoming Appointment</h2>
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="font-medium">Dr. Sarah Wilson</p>
-                        <p class="text-sm text-gray-600">Today at 14:30</p>
-                    </div>
-                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">#A45</span>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="text-sm text-gray-600 mb-1">Current Token</h3>
-                    <p class="text-2xl font-bold">A43</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="text-sm text-gray-600 mb-1">Est. Wait Time</h3>
-                    <p class="text-2xl font-bold">15 min</p>
-                </div>
-            </div>
-        </main>
-
-        <!-- Doctor Cards -->
+        <!-- Top Doctors Section -->
         <main class="p-4">
-            <h2 class="text-lg font-semibold mb-4">Featured Doctors</h2>
+            <h2 class="text-lg font-semibold mb-4">Top Doctors</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- Doctor Card 1 -->
                 <div class="bg-white p-4 rounded-lg shadow">
@@ -94,6 +97,25 @@
                 </div>
             </div>
         </main>
+
+        <!-- Health Tips Section -->
+        <section class="p-4 mt-4 bg-white shadow-sm rounded-lg">
+            <h2 class="text-lg font-semibold mb-4">Health Tips</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-blue-100 p-4 rounded-lg">
+                    <h3 class="font-semibold">Stay Hydrated</h3>
+                    <p class="text-sm text-gray-600">Drink at least 8 glasses of water daily to stay healthy.</p>
+                </div>
+                <div class="bg-blue-100 p-4 rounded-lg">
+                    <h3 class="font-semibold">Regular Exercise</h3>
+                    <p class="text-sm text-gray-600">Engage in physical activities for at least 30 minutes a day.</p>
+                </div>
+                <div class="bg-blue-100 p-4 rounded-lg">
+                    <h3 class="font-semibold">Healthy Eating</h3>
+                    <p class="text-sm text-gray-600">Include fruits and vegetables in your diet for better health.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- Navigation -->
         <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
