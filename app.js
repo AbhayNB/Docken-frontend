@@ -93,40 +93,48 @@ const PatientHome = {
     `
   };
 // // Components
-const PatientBottomNav={
-    template:`
-            <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
-            <ul class="flex justify-around py-3">
-                <li>
-                    <a href="#" class="flex flex-col items-center text-blue-500">
-                        <i class="fas fa-home"></i>
-                        <span class="text-xs mt-1">Home</span>
-                    </a>
-                </li>
-                 <li>
-                 <router-link to="/doclist">  <a href="#" class="flex flex-col items-center text-blue-500">
-                        <i class="fas fa-user-md"></i>
-                        <span class="text-xs mt-1">Doctors</span>
-                    </a></router-link>
-                  
-                </li>
-                <li>
-                    <a href="#" class="flex flex-col items-center text-gray-500">
-                        <i class="far fa-calendar"></i>
-                        <span class="text-xs mt-1">Appointments</span>
-                    </a>
-                </li>
-               
-                <li>
-                    <a href="#" class="flex flex-col items-center text-gray-500">
-                        <i class="far fa-user"></i>
-                        <span class="text-xs mt-1">Profile</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    `
-}
+const PatientBottomNav = {
+    template: `
+      <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <ul class="flex justify-around py-3">
+          <li>
+            <router-link to="/" class="flex flex-col items-center" :class="{ 'text-blue-500': isActive('/') }">
+              <i class="fas fa-home"></i>
+              <span class="text-xs mt-1">Home</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/doclist" class="flex flex-col items-center" :class="{ 'text-blue-500': isActive('/doclist') }">
+              <i class="fas fa-user-md"></i>
+              <span class="text-xs mt-1">Doctors</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/appointments" class="flex flex-col items-center" :class="{ 'text-blue-500': isActive('/appointments') }">
+              <i class="far fa-calendar"></i>
+              <span class="text-xs mt-1">Appointments</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/profile" class="flex flex-col items-center" :class="{ 'text-blue-500': isActive('/profile') }">
+              <i class="far fa-user"></i>
+              <span class="text-xs mt-1">Profile</span>
+            </router-link>
+          </li>
+        </ul>
+      </nav>
+    `,
+    setup() {
+      const route = VueRouter.useRoute();
+  
+      const isActive = (path) => route.path === path;
+  
+      return {
+        isActive,
+      };
+    },
+  };
+  
 const PatientTopBar={
     template:`
             <div class="bg-white p-4 flex justify-between items-center shadow-sm">
