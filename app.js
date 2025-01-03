@@ -239,7 +239,7 @@ const PatientProfile = {
         <!-- Profile Info Section -->
         <div class="flex items-center">
           <img v-if="user.profile_picture" :src="user.profile_picture" alt="User" class="rounded-full w-24 h-24 mr-4">
-          <img v-else src="https://via.placeholder.com/150?text=No+Image" alt="Placeholder" class="rounded-full w-24 h-24 mr-4">
+          <img v-else src="./patientProfielpic.jpg" alt="Placeholder" class="rounded-full w-24 h-24 mr-4">
           <div>
             <h2 class="text-xl font-bold">{{ user.first_name }} {{ user.last_name }}</h2>
             <p class="text-gray-600">{{ user.email }}</p>
@@ -269,7 +269,159 @@ const PatientProfile = {
     </div>
   `
 };
+const DoctorProfile = {
+  data() {
+    return {
+      doctor: {
+        name: "Dr. Jane Smith",
+        specialization: "Cardiologist",
+        experience: "15 years",
+        contact: {
+          email: "jane.smith@healthcare.com",
+          phone: "+1 (987) 654-3210"
+        },
+        profilePicture: "./docprofile.png",
+        bio: "Dr. Jane Smith is a highly experienced cardiologist dedicated to providing compassionate and expert care to her patients.",
+        status: {
+          isAvailable: true,
+          currentToken: 12,
+          totalTokens: 25
+        },
+        schedule: {
+          monday: ["10:00 AM - 1:00 PM", "2:00 PM - 5:00 PM"],
+          tuesday: ["2:00 PM - 5:00 PM"],
+          friday: ["10:00 AM - 1:00 PM"]
+        },
+        reviews: [
+          { rating: 5, comment: "Excellent doctor, very thorough", author: "John D.", date: "2024-12-28" },
+          { rating: 4, comment: "Professional and knowledgeable", author: "Sarah M.", date: "2024-12-25" }
+        ],
+        stats: {
+          totalPatients: "5000+",
+          avgRating: 4.8,
+          totalReviews: 150
+        }
+      }
+    }
+  },
+  computed: {
+    statusColor() {
+      return this.doctor.status.isAvailable ? 'bg-green-500' : 'bg-red-500'
+    }
+  },
+  template: `
+<div class="max-w-4xl mx-auto p-4">
+  <!-- Profile Header -->
+  <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <img :src="doctor.profilePicture" :alt="doctor.name" class="w-32 h-32 rounded-full object-cover">
+      <div class="flex-1 text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+          <h1 class="text-2xl font-bold">{{ doctor.name }}</h1>
+          <span :class="['px-2 py-1 rounded text-white text-sm', statusColor]">
+            {{ doctor.status.isAvailable ? 'Available' : 'Unavailable' }}
+          </span>
+        </div>
+        <p class="text-lg text-gray-600">{{ doctor.specialization }}</p>
+        <p class="text-gray-500">{{ doctor.experience }} Experience</p>
+      </div>
+    </div>
+    <div class="mt-4 flex justify-center md:justify-start gap-4">
+      <button @click="bookAppointment" 
+              class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition-colors">
+        Book Appointment
+      </button>
+      <button @click="toggleSave" 
+              class="flex items-center gap-2 px-4 py-2 rounded-lg border"
+              :class="doctor.isSaved ? 'bg-blue-50 border-blue-500 text-blue-500' : 'border-gray-300 hover:bg-gray-50'">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path :d="doctor.isSaved 
+            ? 'M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z'
+            : 'M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z'" 
+            :fill="doctor.isSaved ? 'currentColor' : 'none'"
+            stroke-linecap="round" 
+            stroke-linejoin="round"/>
+        </svg>
+        {{ doctor.isSaved ? 'Saved' : 'Save' }}
+      </button>
+    </div>
+  </div>
 
+  <!-- Current Token Status -->
+  <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+    <h2 class="text-xl font-bold mb-4">Current Token Status</h2>
+    <div class="flex justify-between items-center">
+      <div>
+        <p class="text-gray-600">Current Token</p>
+        <p class="text-3xl font-bold text-blue-600">#{{ doctor.status.currentToken }}</p>
+      </div>
+      <div>
+        <p class="text-gray-600">Total Tokens Today</p>
+        <p class="text-3xl font-bold">{{ doctor.status.totalTokens }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white rounded-lg shadow-md p-4 text-center">
+      <p class="text-gray-600">Total Patients</p>
+      <p class="text-2xl font-bold">{{ doctor.stats.totalPatients }}</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-4 text-center">
+      <p class="text-gray-600">Average Rating</p>
+      <p class="text-2xl font-bold">{{ doctor.stats.avgRating }}/5</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-4 text-center">
+      <p class="text-gray-600">Total Reviews</p>
+      <p class="text-2xl font-bold">{{ doctor.stats.totalReviews }}</p>
+    </div>
+  </div>
+
+  <!-- Schedule -->
+  <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+    <h2 class="text-xl font-bold mb-4">Weekly Schedule</h2>
+    <div class="space-y-2">
+      <template v-for="(slots, day) in doctor.schedule" :key="day">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+          <span class="font-medium w-24 capitalize">{{ day }}:</span>
+          <div class="flex flex-wrap gap-2">
+            <span v-for="slot in slots" :key="slot" 
+                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+              {{ slot }}
+            </span>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <!-- Reviews -->
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <h2 class="text-xl font-bold mb-4">Patient Reviews</h2>
+    <div class="space-y-4">
+      <div v-for="review in doctor.reviews" :key="review.date" 
+           class="border-b last:border-0 pb-4 last:pb-0">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="flex">
+            <template v-for="n in 5" :key="n">
+              <svg :class="['w-5 h-5', n <= review.rating ? 'text-yellow-400' : 'text-gray-300']"
+                   fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            </template>
+          </div>
+          <span class="text-gray-600">{{ review.author }}</span>
+          <span class="text-gray-400 text-sm">{{ review.date }}</span>
+        </div>
+        <p class="text-gray-700">{{ review.comment }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+  `
+}
 const ViewAppointment={
   template: `
   <main>
@@ -485,6 +637,7 @@ const PatientHome = {
       async fetchDoctors() {
         try {
           const response = await fetch(`${window.config.apiBaseUrl}/doctors`); // Replace with your API endpoint
+          
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
@@ -550,6 +703,9 @@ const PatientHome = {
           v-for="doctor in filteredDoctors" 
           :key="doctor.id"
           class="bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+          @click="()=>{
+            this.$router.push({ path: '/doctor-profile' });
+            }"
         >
           <img 
             :src="doctor.image || './docprofile.png'" 
@@ -589,6 +745,9 @@ const PatientHome = {
   <br><br>
 `,
   };
+
+
+// components
 
 const PatientBottomNav = {
     template: `
@@ -663,7 +822,7 @@ const PatientBottomNav = {
       };
     },
   };
-  const PatientTopBar = {
+const PatientTopBar = {
     template: `
       <div v-if="isLoggedIn" class="bg-white p-4 flex justify-between items-center shadow-sm">
         <h1 class="text-lg font-semibold">DocKen</h1>
@@ -702,6 +861,8 @@ const routes = [
       next('/login');// Redirect to login page if not logged in
     }
   }},
+  { path: '/doctor-profile', component: DoctorProfile },
+  
     { path: '/register', component: Register },
     { path: '/login', component: Login },
     { path: '/search', component: FindDoctor },
